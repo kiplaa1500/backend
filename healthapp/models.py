@@ -26,6 +26,8 @@ class User(AbstractBaseUser, PermissionsMixin):
   last_name = models.CharField(max_length=50, blank=True)
   role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, blank=True, null=True, default=3)
 
+
+
   USERNAME_FIELD = 'email'
   REQUIRED_FIELDS = []
 

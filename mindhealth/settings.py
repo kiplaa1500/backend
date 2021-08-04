@@ -16,9 +16,17 @@ import django_heroku
 import dj_database_url
 from decouple import config,Csv
 from datetime import timedelta
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+cloudinary.config( 
+  cloud_name = config('CLOUD_NAME'), 
+  api_key = config('API_KEY'),
+  api_secret = config('API_SECRET')
+)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -42,6 +50,7 @@ INSTALLED_APPS = [
     'healthapp',
     'rest_framework',
     'rest_framework_simplejwt',
+    'cloudinary'
 ]
 # App the REST framework url conf
 ROOT_URLCONF = 'django_rest_role_jwt.urls'
