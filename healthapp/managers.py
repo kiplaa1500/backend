@@ -8,6 +8,9 @@ class CounsellorUser(BaseUserManager):
     and has an is_admin field to allow access to the admin app 
   """
   def create_user(self,email,password, **extra_fields):
+    """
+        Creates and saves a User with the given email and password.
+    """
     if not email:
       raise ValueError(_('The email must be set'))
     if not password:
