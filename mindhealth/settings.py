@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'healthapp',
     'rest_framework',
     'rest_framework_simplejwt',
-    'cloudinary'
+    'cloudinary',
+    'corsheaders',
 ]
 # App the REST framework url conf
 ROOT_URLCONF = 'django_rest_role_jwt.urls'
@@ -91,6 +92,7 @@ SIMPLE_JWT = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -187,8 +189,15 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+
+CORS_ORIGIN_ALLOW_ALL = True
+
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
+
+
+
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
